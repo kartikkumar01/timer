@@ -61,3 +61,10 @@ document.addEventListener("fullscreenchange", updateFullscreenBtn);
 
 // Initialize button state on page load (optional, for accurate ARIA state)
 updateFullscreenBtn();
+
+
+//add reset button functionality
+resetBtn.addEventListener("click", () => {
+  seconds = 0;
+  updateDisplay();
+});
