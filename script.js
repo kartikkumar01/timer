@@ -73,10 +73,8 @@ resetBtn.addEventListener("click", () => {
   document.documentElement.classList.add("dark");
 
   // 2) Make the default full screen
-  window.addEventListener("load", () => {
+  document.addEventListener("click", () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {
-        // Ignore error if not triggered by user gesture; let manual button handle fallback
-      });
+      document.documentElement.requestFullscreen();
     }
-  });
+  }, { once: true });
