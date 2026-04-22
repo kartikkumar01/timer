@@ -36,3 +36,28 @@ startBtn.addEventListener("click", () => {
 themeToggle.addEventListener("click", () => {
   document.documentElement.classList.toggle("dark");
 });
+
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+function updateFullscreenBtn() {
+  if (document.fullscreenElement) {
+    // Remove any text so that only the icon shows, reflecting button design
+    fullscreenBtn.setAttribute("aria-label", "Exit fullscreen");
+    // Optionally add styles (like a different bg?) or swap icon if you want
+  } else {
+    fullscreenBtn.setAttribute("aria-label", "Enter fullscreen");
+  }
+}
+
+fullscreenBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+document.addEventListener("fullscreenchange", updateFullscreenBtn);
+
+// Initialize button state on page load (optional, for accurate ARIA state)
+updateFullscreenBtn();
