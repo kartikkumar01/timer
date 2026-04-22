@@ -68,3 +68,15 @@ resetBtn.addEventListener("click", () => {
   seconds = 0;
   updateDisplay();
 });
+
+  // 1) Make the default dark mode
+  document.documentElement.classList.add("dark");
+
+  // 2) Make the default full screen
+  window.addEventListener("load", () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {
+        // Ignore error if not triggered by user gesture; let manual button handle fallback
+      });
+    }
+  });
